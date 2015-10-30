@@ -5,6 +5,7 @@
 """
 """
 
+import django
 from django.conf import settings
 databases = {
     'default': {
@@ -18,6 +19,7 @@ settings.configure(
     ROOT_URLCONF='urls',
     DEBUG=True
 )
+django.setup()
 
 from django.test import TestCase, RequestFactory
 
