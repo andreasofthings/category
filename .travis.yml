@@ -1,0 +1,23 @@
+sudo: false
+language: python
+
+python:
+  - "2.7"
+  - "3.4"
+  - "3.5"
+
+cache:
+  directories:
+      - pip_download_cache
+
+env:
+  - TRAVIS="True"
+
+install:
+ - pip install git+https://github.com/aneumeier/category#master
+ - pip install coveralls
+ - pip install nose
+script:
+  - nosetests --with-coverage --cover-package=category
+after_success:
+  - coveralls
