@@ -12,7 +12,7 @@ databases = {
         'NAME': 'mydatabase',
     }
 }
-settings.configure(DATABSES=databases, DEBUG=True)
+settings.configure(DATABASES=databases, DEBUG=True)
 
 from django.test import TestCase
 
