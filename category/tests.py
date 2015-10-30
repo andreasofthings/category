@@ -26,7 +26,7 @@ from django.test import TestCase, RequestFactory
 
 class CategoryTest(TestCase):
     fixtures = [
-        'category.json',
+        'Categories.yaml',
     ]
 
     def setUp(self):
