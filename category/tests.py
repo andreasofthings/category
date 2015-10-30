@@ -12,12 +12,30 @@ databases = {
         'NAME': 'mydatabase',
     }
 }
-settings.configure(DATABASES=databases, DEBUG=True)
 
-from django.test import TestCase
+settings.configure(
+    DATABASES=databases,
+    ROOT_URLCONF='urls',
+    DEBUG=True
+)
+
+from django.test import TestCase, RequestFactory
 
 
-class SimpleTest(TestCase):
+class CategoryTest(TestCase):
+    fixtures = [
+        'category.json',
+    ]
+
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    def test_category_list_view(self):
+        from category.views import CategoryListView
+        request = self.factory.get('/category')
+        response = CategoryListView.as_view()(request)
+        self.assertEqual(response.status_code, 200)
+
     def test_basic_addition(self):
         """
         Tests that 1 + 1 always equals 2.
