@@ -1,9 +1,13 @@
-"""
-This file demonstrates writing tests using the unittest module. These will pass
-when you run "manage.py test".
+#!/usr/bin/env
+# -*- encoding: utf-8
+# vim: ts=4 et sw=4 sts=4
 
-Replace this with more appropriate tests for your application.
 """
+"""
+
+from django.conf import settings
+
+settings.configure(DEBUG=True)
 
 from django.test import TestCase
 
