@@ -6,8 +6,13 @@
 """
 
 from django.conf import settings
-
-settings.configure(DEBUG=True)
+databases = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
+    }
+}
+settings.configure(DATABSES=databases, DEBUG=True)
 
 from django.test import TestCase
 
