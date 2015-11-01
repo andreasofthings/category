@@ -21,7 +21,7 @@ class Migration(SchemaMigration):
         # Adding model 'Category'
         db.create_table(u'category_category', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=200)),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=200)),
             ('slug', self.gf('django.db.models.fields.SlugField')(unique=True, max_length=255)),
             ('parent', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['category.Category'], null=True, blank=True)),
         ))
@@ -42,7 +42,7 @@ class Migration(SchemaMigration):
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'parent': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['category.Category']", 'null': 'True', 'blank': 'True'}),
             'slug': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '255'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '200'})
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '200'})
         },
         u'category.tag': {
             'Meta': {'ordering': "('name',)", 'object_name': 'Tag'},

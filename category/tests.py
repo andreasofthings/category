@@ -8,7 +8,7 @@
 import django
 from django.conf import settings
 from django.test import TestCase, RequestFactory
-
+from django.core.management.commands.migrate import Command as Migrate
 databases = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -25,6 +25,7 @@ settings.configure(
     DEBUG=True
 )
 django.setup()
+Migrate.handle()
 
 
 class CategoryTest(TestCase):
