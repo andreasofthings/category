@@ -8,13 +8,14 @@ class TagAdmin(admin.ModelAdmin):
     Tag Admin Class
     """
     list_display = ('name', 'slug', 'relevant', 'touched')
+    fields = ('name', )
 
 
 class CategoryAdmin(admin.ModelAdmin):
     """
     Admin for Category
     """
-    pass
+    fields = ('name', )
     # form = CategoryAdminForm
 
 # def _category(category):

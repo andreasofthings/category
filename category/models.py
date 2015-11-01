@@ -107,7 +107,7 @@ class Category(models.Model):
     """
     objects = CategoryManager()
 
-    title = models.CharField(
+    name = models.CharField(
         max_length=200,
         help_text='Short descriptive name for this category.',
     )

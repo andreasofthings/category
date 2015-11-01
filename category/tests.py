@@ -13,9 +13,12 @@ databases = {
         'NAME': 'mydatabase',
     }
 }
-
+installed_apps = {
+    'category',
+}
 settings.configure(
     DATABASES=databases,
+    INSTALLED_APPS=installed_apps,
     ROOT_URLCONF='urls',
     DEBUG=True
 )
