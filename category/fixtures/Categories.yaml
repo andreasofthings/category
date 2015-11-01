@@ -1,7 +1,7 @@
 - model: category.Category
   fields:
     "name": "Business"
-    "slug": "business"
+    "slug": 1
 - model: category.Category
   fields:
     "name": "News"
