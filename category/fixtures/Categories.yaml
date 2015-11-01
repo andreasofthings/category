@@ -1,18 +1,24 @@
 - model: category.Category
   fields:
     "name": "Business"
+    "slug": "business"
 - model: category.Category
   fields:
     "name": "News"
+    "slug": "news"
 - model: category.Category
   fields:
     "name": "Sports"
+    "slug": "sports"
 - model: category.Category
   fields:
     "name": "Culture"
+    "slug": "culture"
 - model: category.Category
   fields:
     "name": "Podcast"
+    "slug": "podcast"
 - model: category.Category
   fields:
     "name": "High-Tech"
+    "slug": "hightech"
