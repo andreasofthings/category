@@ -21,3 +21,5 @@ script:
   - nosetests --with-coverage --cover-package=category
 after_success:
   - coveralls
+notifications:
+  email: false
