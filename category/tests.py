@@ -21,6 +21,7 @@ installed_apps = {
 settings.configure(
     DATABASES=databases,
     INSTALLED_APPS=installed_apps,
+    DEFAULT_INDEX_TABLESPACE="",
     ROOT_URLCONF='urls',
     DEBUG=True
 )
