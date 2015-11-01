@@ -32,6 +32,7 @@ setup(
     ],
     install_requires=[
         'django>=1.8.0',
+        'django-braces>=1.8.0'
     ],
     dependency_links=[
     ]
