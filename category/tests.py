@@ -7,6 +7,8 @@
 
 import django
 from django.conf import settings
+from django.test import TestCase, RequestFactory
+
 databases = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -23,8 +25,6 @@ settings.configure(
     DEBUG=True
 )
 django.setup()
-
-from django.test import TestCase, RequestFactory
 
 
 class CategoryTest(TestCase):

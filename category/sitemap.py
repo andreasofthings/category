@@ -16,9 +16,10 @@ from datetime import datetime, timedelta
 
 from django.utils import timezone
 from django.contrib.sitemaps import Sitemap
-from django.db.models import Max
+# from django.db.models import Max
 
 from category.models import Category, Tag
+
 
 class CategorySitemap(Sitemap):
     """
@@ -37,6 +38,7 @@ class CategorySitemap(Sitemap):
     def lastmod(self, obj):
         return datetime.now()
 
+
 class TagSitemap(Sitemap):
     """
     SiteMap for Tags
@@ -51,10 +53,9 @@ class TagSitemap(Sitemap):
             return "weekly"
         return "monthly"
 
-
     def priority(self, obj):
         posts_per_tag = obj.posts().count()
-        total_posts = Post.objects.all().count()
+        total_posts = 100  # / Post.objects.all().count()
         priority = float(posts_per_tag) / float(total_posts)
         return priority
 
