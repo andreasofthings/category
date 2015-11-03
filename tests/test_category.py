@@ -6,6 +6,8 @@
 Test Models and Views.
 """
 
+from __future__ import absolute_import
+
 from django.test import TestCase, RequestFactory
 
 
