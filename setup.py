@@ -33,6 +33,7 @@ setup(
     install_requires=[
         'django>=1.8.0',
         'django-braces>=1.8.0',
+        'django-crispy-forms>=1.2.0',
         'pyaml',
     ],
     dependency_links=[

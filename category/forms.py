@@ -1,16 +1,24 @@
 from django import forms
 from models import Category, Tag
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout
+from crispy_forms.layout import Fieldset
+from crispy_forms.layout import ButtonHolder
+from crispy_forms.layout import Submit
+from crispy_forms.layout import Button
+from crispy_forms.layout import Div
+
 
 class CategoryCreateForm(forms.ModelForm):
     class Meta:
         model = Category
-        fields = ('title', 'parent',)
-    
+        fields = ('name', 'parent',)
+
     def __init__(self, *args, **kwargs):
         self.helper = FormHelper()
         self.helper.layout = Layout(
             Div(
-                'title', 
+                'name',
                 'parent',
             ),
             ButtonHolder(
@@ -23,6 +31,7 @@ class CategoryCreateForm(forms.ModelForm):
         self.helper.form_action = 'planet:category-add'
         super(CategoryCreateForm, self).__init__(*args, **kwargs)
 
+
 class CategoryUpdateForm(forms.ModelForm):
     """
     CategoryUpdateForm
@@ -33,14 +42,14 @@ class CategoryUpdateForm(forms.ModelForm):
     """
     class Meta:
         model = Category
-        fields = ('title', 'slug', 'parent',)
+        fields = ('name', 'slug', 'parent',)
 
     def __init__(self, *args, **kwargs):
         self.helper = FormHelper()
         self.helper.layout = Layout(
             Fieldset(
                 'Change Category',
-                'title',
+                'name',
                 'slug',
                 'parent',
             ),
@@ -52,10 +61,12 @@ class CategoryUpdateForm(forms.ModelForm):
         self.helper.form_method = 'post'
         super(CategoryUpdateForm, self).__init__(*args, **kwargs)
 
+
 class TagCreateForm(forms.ModelForm):
-  class Meta:
-    model = Tag
-    fields = ('name', )
+    class Meta:
+        model = Tag
+        fields = ('name', )
+
 
 class CategoryAdminForm(forms.ModelForm):
     class Meta:
