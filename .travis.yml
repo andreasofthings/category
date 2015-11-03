@@ -1,5 +1,6 @@
 sudo: false
 language: python
+services: sqlite
 
 python:
   - "2.7"
@@ -8,17 +9,17 @@ python:
 
 cache:
   directories:
-      - pip_download_cache
+    - pip_download_cache
 
 env:
   - TRAVIS="True"
 
 install:
- - pip install git+https://github.com/aneumeier/category#master
- - pip install coveralls
- - pip install nose
-script:
-  - nosetests --with-coverage --cover-package=category
+  - pip install pytest-django
+  - pip install pytest-cov
+  - pip install coveralls
+  - python setup.py install
+script: py.test tests/
 after_success:
   - coveralls
 notifications:
