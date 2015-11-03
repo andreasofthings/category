@@ -22,11 +22,27 @@ DATABASES = {
         'NAME': 'mydatabase',
     }
 }
-INSTALLED_APPS = {
-    'tests',
-    'category',
-}
+
 ROOT_URLCONF = 'tests.urls'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/path/to/django/debug.log',
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.common.CommonMiddleware',
