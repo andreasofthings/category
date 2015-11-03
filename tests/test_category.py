@@ -3,6 +3,7 @@
 # vim: ts=4 et sw=4 sts=4
 
 """
+Test Models and Views.
 """
 
 from django.test import TestCase, RequestFactory
