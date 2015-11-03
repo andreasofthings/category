@@ -71,3 +71,4 @@ class TagCreateForm(forms.ModelForm):
 class CategoryAdminForm(forms.ModelForm):
     class Meta:
         model = Category
+        fields = ('name', 'parent',)
