@@ -31,8 +31,7 @@ LOGGING = {
     'handlers': {
         'file': {
             'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': '/path/to/django/debug.log',
+            'class': 'logging.StreamHandler',
         },
     },
     'loggers': {
@@ -69,18 +68,18 @@ STATICFILES_FINDERS = (
 )
 
 INSTALLED_APPS = (
-        'django.contrib.auth',
-        'django.contrib.contenttypes',
-        'django.contrib.sessions',
-        'django.contrib.messages',
-        'django.contrib.staticfiles',
-        'django.contrib.sites',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django.contrib.sites',
 
-        'tests',
+    'tests',
 )
 
 PASSWORD_HASHERS = (
-        'django.contrib.auth.hashers.MD5PasswordHasher',
+    'django.contrib.auth.hashers.MD5PasswordHasher',
 )
 
 import django
