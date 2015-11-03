@@ -122,7 +122,7 @@ class Category(models.Model):
     parent = models.ForeignKey('self', null=True, blank=True)
 
     def __str__(self):
-        return self.title
+        return self.name
 
     def natural_key(self):
         return self.slug
@@ -131,20 +131,20 @@ class Category(models.Model):
         """
         Django Meta.
         """
-        ordering = ('title',)
+        ordering = ('name',)
         verbose_name = 'category'
         verbose_name_plural = 'categories'
 
     def save(self, *args, **kwargs):
         # ToDo: prohibit circular references
         if not self.slug:
-            self.slug = slugify(self.title)
+            self.slug = slugify(self.name)
             """Where self.name is the field used for 'pre-populate from'"""
         models.Model.save(self, *args, **kwargs)
 
     @property
     def children(self):
-        return self.category_set.all().order_by('title')
+        return self.category_set.all().order_by('name')
 
     @models.permalink
     def get_absolute_url(self):
