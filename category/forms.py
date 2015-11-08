@@ -1,5 +1,4 @@
 from django import forms
-from models import Category, Tag
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout
 from crispy_forms.layout import Fieldset
@@ -7,6 +6,9 @@ from crispy_forms.layout import ButtonHolder
 from crispy_forms.layout import Submit
 from crispy_forms.layout import Button
 from crispy_forms.layout import Div
+
+
+from .models import Category, Tag
 
 
 class CategoryCreateForm(forms.ModelForm):
