@@ -5,7 +5,7 @@
 - model: category.Category
   fields:
     "name": "News"
-    "slug": "news"
+    "slug": 2
 - model: category.Category
   fields:
     "name": "Sports"
