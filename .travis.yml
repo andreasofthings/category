@@ -20,7 +20,7 @@ install:
   - python setup.py install
   - python manage.py makemigrations
   - python manage.py migrate
-script: py.test tests/
+script: py.test --cov=category tests/
 after_success:
   - coveralls
 notifications:
