@@ -1,11 +1,8 @@
 from __future__ import absolute_import
 
-from . import views
-from .compat import patterns, include, url
+from .compat import include, url
 
 
-urlpatterns = patterns(
-    '',
-    #
-    url(),
-)
+urlpatterns = [
+    url('', include('category.urls')),
+]
