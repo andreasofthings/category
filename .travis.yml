@@ -14,13 +14,10 @@ env:
   - TRAVIS="True"
 
 install:
-  - pip install pytest-django
-  - pip install pytest-cov
+  - pip install git+https://github.com/aneumeier/category#master
   - pip install coveralls
-  - python setup.py install
-  - python manage.py makemigrations
-  - python manage.py migrate
-script: py.test --cov=category tests/
+script:
+  - coverage run --source=category categorytest.py -m py.test
 after_success:
   - coveralls
 notifications:

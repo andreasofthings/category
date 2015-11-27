@@ -91,7 +91,7 @@ class Tag(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('planet:tag-view', [str(self.slug)])
+        return ('category:tag-view', [str(self.slug)])
 
 
 class CategoryManager(models.Manager):
