@@ -37,9 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.admin',
     'django.contrib.sitemaps',
-    'crispy_forms',
     'tests',
-    'userprofile',
+    'category'
 )
 
 MIDDLEWARE_CLASSES = (
