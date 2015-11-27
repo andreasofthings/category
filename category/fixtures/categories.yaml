@@ -22,3 +22,6 @@
   fields:
     "name": "High-Tech"
     "slug": ["hightech", ]
+- model: category.Tag
+  fields:
+    "name": "Link"
