@@ -13,7 +13,7 @@ if __name__ == '__main__':
     import django
     from django.core.management import execute_from_command_line
     execute_from_command_line([sys.argv[0], "migrate"])
-    execute_from_command_line([sys.argv[0], "makemigrations", "userprofile",])
+    execute_from_command_line([sys.argv[0], "makemigrations", "category", ])
     if hasattr(django, 'setup'):
         django.setup()
     from django.test.runner import DiscoverRunner
