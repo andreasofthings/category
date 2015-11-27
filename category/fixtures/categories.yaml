@@ -2,8 +2,6 @@
   fields:
     "name":
       - Business
-    "slug":
-      - business
 - model: category.Category
   fields:
     "name": "News"
