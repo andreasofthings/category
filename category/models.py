@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 
 
 class TagManager(models.Manager):
@@ -54,6 +56,10 @@ class Tag(models.Model):
     touched = models.DateTimeField(auto_now=True)
     """Keep track of when this Tag was last used."""
 
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
+
     def save(self, *args, **kwargs):
         """
         This function is called whenever the object is saved.
@@ -85,7 +91,7 @@ class Tag(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('planet:tag-view', [str(self.slug)])
+        return ('category:tag-view', [str(self.slug)])
 
 
 class CategoryManager(models.Manager):
