@@ -56,18 +56,21 @@ class Tag(models.Model):
     touched = models.DateTimeField(auto_now=True)
     """Keep track of when this Tag was last used."""
 
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.PositiveIntegerField()
+    content_type = models.ForeignKey(
+        ContentType,
+        null=True,
+        on_delete=models.CASCADE
+    )
+    object_id = models.PositiveIntegerField(null=True)
     content_object = GenericForeignKey('content_type', 'object_id')
 
-    def save(self, *args, **kwargs):
-        """
-        This function is called whenever the object is saved.
-        For a Tag, it will try to set a slug if it is not yet available.
-        """
-        if not self.slug:
-            self.slug = slugify(self.name)
-        super(Tag, self).save(*args, **kwargs)
+    @classmethod
+    def create(cls, name, slug=None):
+        tag = cls(name=name)
+        if not slug:
+            tag.slug = slugify(tag.name)
+        tag.save()
+        return tag
 
     class Meta:
         """
@@ -127,6 +130,14 @@ class Category(models.Model):
 
     parent = models.ForeignKey('self', null=True, blank=True)
 
+    @classmethod
+    def create(cls, name, slug=None):
+        cat = cls(name=name)
+        if not slug:
+            cat.slug = slugify(cat.name)
+        cat.save()
+        return cat
+
     def __str__(self):
         return self.name
 
@@ -140,13 +151,6 @@ class Category(models.Model):
         ordering = ('name',)
         verbose_name = 'category'
         verbose_name_plural = 'categories'
-
-    def save(self, *args, **kwargs):
-        # ToDo: prohibit circular references
-        if not self.slug:
-            self.slug = slugify(self.name)
-            """Where self.name is the field used for 'pre-populate from'"""
-        models.Model.save(self, *args, **kwargs)
 
     @property
     def children(self):

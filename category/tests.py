@@ -8,6 +8,7 @@
 from django.test import TestCase, RequestFactory
 
 from category.models import Category
+from category.models import Tag
 
 
 class CategoryTest(TestCase):
@@ -19,10 +20,8 @@ class CategoryTest(TestCase):
         self.factory = RequestFactory()
 
     def test_new_category(self):
-        cat = Category(name="Test")
-        pk, created = cat.save()
-        self.assertEqual(pk, 2)
-        self.assertEqual(created, True)
+        cat = Category.create(name="Test")
+        self.assertEqual(cat.pk, 2)
 
     def test_category_list_view(self):
         from category.views import CategoryListView
@@ -40,8 +39,5 @@ class TagTest(TestCase):
         self.factory = RequestFactory()
 
     def test_new_tag(self):
-        from category.models import Tag
-        c = Tag(name="Test")
-        pk, created = c.save()
-        self.assertEqual(pk, 2)
-        self.assertEqual(created, True)
+        c = Tag.create(name="Test")
+        self.assertEqual(c.pk, 1)
