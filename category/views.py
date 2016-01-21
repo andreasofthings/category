@@ -7,7 +7,8 @@
 from django.core.urlresolvers import reverse
 from django.views.generic import CreateView, UpdateView
 from django.views.generic import DetailView, ListView
-from braces.views import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
 
 from .models import Category, Tag
 from .forms import CategoryCreateForm, TagCreateForm, CategoryUpdateForm
