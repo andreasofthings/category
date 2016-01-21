@@ -7,6 +7,8 @@
 
 from django.test import TestCase, RequestFactory
 
+from category.models import Category
+
 
 class CategoryTest(TestCase):
     fixtures = [
@@ -17,9 +19,8 @@ class CategoryTest(TestCase):
         self.factory = RequestFactory()
 
     def test_new_category(self):
-        from category.models import Category
-        c = Category(name="Test")
-        pk, created = c.save()
+        cat = Category(name="Test")
+        pk, created = cat.save()
         self.assertEqual(pk, 2)
         self.assertEqual(created, True)
 

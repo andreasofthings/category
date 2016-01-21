@@ -1,4 +1,4 @@
 - model: category.Category
   fields:
     "slug":
-      - ("business", )
+      - '["business", ]'

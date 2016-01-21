@@ -10,11 +10,11 @@ class TagManager(models.Manager):
     Manager for `Tag` objects.
     """
 
-    def get_by_natural_key(self, slug):
-        """
-        get Tag by natural key, to allow serialization by key rather than `id`
-        """
-        return self.get(slug=slug)
+#    def get_by_natural_key(self, slug):
+#        """
+#        get Tag by natural key, to allow serialization by key rather than `id`
+#        """
+#        return self.get(slug=slug)
 
 
 class Tag(models.Model):
@@ -98,11 +98,11 @@ class CategoryManager(models.Manager):
     """
     Manager for Category
     """
-    def get_by_natural_key(self, slug):
-        """
-        Get Category by natural kea to allow serialization
-        """
-        return self.get(slug=slug)
+    # def get_by_natural_key(self, slug):
+    #    """
+    #    Get Category by natural kea to allow serialization
+    #    """
+    #    return self.get(slug=slug)
 
 
 class Category(models.Model):
