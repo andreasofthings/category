@@ -26,14 +26,14 @@ setup(
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
     install_requires=[
-        'django>=1.8.0',
-        'django-braces>=1.8.0',
-        'django-crispy-forms>=1.2.0',
+        'django>=1.9.0',
+        'django-crispy-forms>=1.6.0',
         'pyaml',
     ],
     dependency_links=[

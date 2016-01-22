@@ -9,8 +9,7 @@ from category.views import TagListView, TagDetailView
 from category.views import TagCreateView, TagUpdateView
 
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(
         r'^category/$',
         CategoryListView.as_view(),
@@ -36,10 +35,9 @@ urlpatterns = patterns(
         CategoryUpdateView.as_view(),
         name="category-update"
     ),
-)
+]
 
-urlpatterns += patterns(
-    '',
+urlpatterns += [
     url(
         r'^tag /$',
         TagListView.as_view(),
@@ -65,4 +63,4 @@ urlpatterns += patterns(
         TagUpdateView.as_view(),
         name="tag-update"
     ),
-)
+]
