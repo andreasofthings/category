@@ -28,13 +28,10 @@ class CategoryDetailView(DetailView):
     """
     Show details for a particular Category
 
-    ToDo:
+    .. ToDo::
     this shall include stats
     """
     model = Category
-
-    def dispatch(self, *args, **kwargs):
-        return super(CategoryDetailView, self).dispatch(*args, **kwargs)
 
 
 class CategoryUpdateView(
