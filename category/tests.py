@@ -32,13 +32,15 @@ class CategoryTest(TestCase):
         self.assertEqual(cat.pk, 2)
 
     def test_category_list_view(self):
-        request = self.factory.get('/category')
+        request = self.factory.get('/category/')
         response = CategoryListView.as_view()(request)
         self.assertEqual(response.status_code, 200)
 
     def test_category_detail_view(self):
+        url = reverse('category-view', kwargs={'pk':1,})
+        print(url)
         request = self.factory.get(
-            reverse('category-view', args=('test',))
+            url
         )
 
         request.user = self.anonymous

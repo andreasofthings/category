@@ -33,6 +33,10 @@ class CategoryDetailView(DetailView):
     """
     model = Category
 
+    def dispatch(self, *args, **kwargs):
+        print(args)
+        return super(CategoryDetailView, self).dispatch(*args, **kwargs)
+
 
 class CategoryUpdateView(
         LoginRequiredMixin,

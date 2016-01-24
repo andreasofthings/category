@@ -1,7 +1,7 @@
 #! /usr/bin/env python2.7
 # -*- coding: utf-8 -*-
 
-from django.conf.urls import url, patterns
+from django.conf.urls import url
 
 from category.views import CategoryListView, CategoryCreateView
 from category.views import CategoryDetailView, CategoryUpdateView
@@ -25,11 +25,10 @@ urlpatterns = [
         CategoryCreateView.as_view(),
         name="category-add"
     ),
-    url(
-        r'^category/(?P<slug>\w+)/$',
-        CategoryDetailView.as_view(),
-        name="category-view"
-    ),
+    url(r'^category/id/(?P<pk>\d+)/$',
+        CategoryDetailView.as_view(), name="category-view"),
+    url(r'^category/name/(?P<slug>\w+)/$',
+        CategoryDetailView.as_view(), name="category-view"),
     url(
         r'^category/(?P<slug>\w+)/update$',
         CategoryUpdateView.as_view(),
