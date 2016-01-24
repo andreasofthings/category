@@ -9,11 +9,11 @@ from django.test import TestCase, RequestFactory
 from django.contrib.auth.models import AnonymousUser, User
 from django.core.urlresolvers import reverse
 
-from category.models import Category
-from category.views import CategoryListView
-from category.views import CategoryDetailView
+from .models import Category
+from .views import CategoryListView
+from .views import CategoryDetailView
 
-from category.models import Tag
+from .models import Tag
 
 
 class CategoryTest(TestCase):
@@ -38,7 +38,7 @@ class CategoryTest(TestCase):
 
     def test_category_detail_view(self):
         request = self.factory.get(
-            reverse('category-view', kwargs={'slug': 'test'})
+            reverse('category-view', args=('test',))
         )
 
         request.user = self.anonymous
