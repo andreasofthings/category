@@ -38,7 +38,7 @@ class CategoryTest(TestCase):
 
     def test_category_detail_view(self):
         request = self.factory.get(
-            reverse('category:category-view', kwargs={'slug': 'test'})
+            reverse('category-view', kwargs={'slug': 'test'})
         )
 
         request.user = self.anonymous
