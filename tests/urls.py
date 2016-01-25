@@ -4,5 +4,5 @@ from .compat import include, url
 
 
 urlpatterns = [
-    url('', include('category.urls')),
+    url('', include('category.urls', namespace="category")),
 ]
