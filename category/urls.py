@@ -27,7 +27,7 @@ urlpatterns = [
     ),
     url(r'^category/id/(?P<pk>\d+)/$',
         CategoryDetailView.as_view(), name="category-view"),
-    url(r'^category/name/(?P<slug>\w+)/$',
+    url(r'^category/name/(?P<slug>[-\w]+)/$',
         CategoryDetailView.as_view(), name="category-view"),
     url(
         r'^category/(?P<slug>\w+)/update$',

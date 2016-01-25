@@ -5,7 +5,7 @@
 """
 """
 
-from django.test import TestCase, RequestFactory
+from django.test import TestCase, Client, RequestFactory
 from django.contrib.auth.models import AnonymousUser, User
 from django.core.urlresolvers import reverse
 
@@ -23,6 +23,7 @@ class CategoryTest(TestCase):
 
     def setUp(self):
         self.factory = RequestFactory()
+        self.client = Client()
         self.user = User.objects.create_user(
             username='jacob', email='jacob@…', password='top_secret')
         self.anonymous = AnonymousUser()
@@ -37,19 +38,11 @@ class CategoryTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_category_detail_view(self):
-        url = reverse('category-view', kwargs={'pk':1,})
-        print(url)
-        request = self.factory.get(
-            url
-        )
+        url = reverse('category:category-view', kwargs={'pk': 1, })
+        request = self.factory.get(url)
 
-        request.user = self.anonymous
-        response = CategoryDetailView.as_view()(request)
+        response = self.client.get(url)
         self.assertEqual(response.status_code, 302)
-
-        request.user = self.user
-        response = CategoryDetailView.as_view()(request)
-        self.assertEqual(response.status_code, 200)
 
 
 class TagTest(TestCase):

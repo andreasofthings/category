@@ -24,7 +24,7 @@ class CategoryListView(ListView):
     paginate_by = 10
 
 
-class CategoryDetailView(DetailView):
+class CategoryDetailView(LoginRequiredMixin, DetailView):
     """
     Show details for a particular Category
 
@@ -34,7 +34,6 @@ class CategoryDetailView(DetailView):
     model = Category
 
     def dispatch(self, *args, **kwargs):
-        print(args)
         return super(CategoryDetailView, self).dispatch(*args, **kwargs)
 
 
