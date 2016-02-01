@@ -24,11 +24,11 @@ class CategoryListView(ListView):
     paginate_by = 10
 
 
-class CategoryDetailView(DetailView):
+class CategoryDetailView(LoginRequiredMixin, DetailView):
     """
     Show details for a particular Category
 
-    ToDo:
+    .. ToDo::
     this shall include stats
     """
     model = Category

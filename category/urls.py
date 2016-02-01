@@ -25,11 +25,10 @@ urlpatterns = [
         CategoryCreateView.as_view(),
         name="category-add"
     ),
-    url(
-        r'^category/(?P<slug>\w+)/$',
-        CategoryDetailView.as_view(),
-        name="category-view"
-    ),
+    url(r'^category/id/(?P<pk>\d+)/$',
+        CategoryDetailView.as_view(), name="category-view"),
+    url(r'^category/name/(?P<slug>[-\w]+)/$',
+        CategoryDetailView.as_view(), name="category-view"),
     url(
         r'^category/(?P<slug>\w+)/update$',
         CategoryUpdateView.as_view(),
