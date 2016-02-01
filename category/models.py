@@ -1,3 +1,6 @@
+from __future__ import unicode_literals
+from django.utils.encoding import python_2_unicode_compatible
+
 from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
@@ -17,6 +20,7 @@ class TagManager(models.Manager):
 #        return self.get(slug=slug)
 
 
+@python_2_unicode_compatible
 class Tag(models.Model):
     """
     A tag.
@@ -86,11 +90,11 @@ class Tag(models.Model):
         """
         return self.tag_posts.all()
 
-    def __unicode__(self):
+    def __str__(self):
         """
         Human readable representation of the object.
         """
-        return self.name
+        return u'%s' % (self.name)
 
     @models.permalink
     def get_absolute_url(self):
@@ -108,6 +112,7 @@ class CategoryManager(models.Manager):
     #    return self.get(slug=slug)
 
 
+@python_2_unicode_compatible
 class Category(models.Model):
     """
     Category model to be used for categorization of content. Categories are
@@ -139,7 +144,7 @@ class Category(models.Model):
         return cat
 
     def __str__(self):
-        return self.name
+        return u'%s' % (self.name)
 
     def natural_key(self):
         return self.slug
