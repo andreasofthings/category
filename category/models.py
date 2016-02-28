@@ -74,6 +74,7 @@ class Tag(models.Model):
         if not slug:
             tag.slug = slugify(tag.name)
         tag.save()
+        print("Tag name, slug: %s, %s" % (tag.name, tag.slug))
         return tag
 
     class Meta:
@@ -141,6 +142,7 @@ class Category(models.Model):
         if not slug:
             cat.slug = slugify(cat.name)
         cat.save()
+        print("Category name, slug: %s, %s" % (cat.name, cat.slug))
         return cat
 
     def __str__(self):
