@@ -30,7 +30,7 @@ class CategoryTest(TestCase):
 
     def test_new_category(self):
         cat = Category.create(name="Test")
-        self.assertEqual(cat.pk, 2)
+        self.assertEqual(cat.pk, 7)
 
     def test_category_list_view(self):
         request = self.factory.get('/category/')
