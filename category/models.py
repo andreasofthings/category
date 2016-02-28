@@ -85,6 +85,11 @@ class Tag(models.Model):
         verbose_name = _('tag')
         verbose_name_plural = _('tags')
 
+    def save(self, *args, **kwargs):
+        if not self.slug or self.slug == "":
+            self.slug = slugify(self.name)
+        super(Tag, self).save(*args, **kwargs)
+
     def __str__(self):
         """
         Human readable representation of the object.
@@ -153,6 +158,11 @@ class Category(models.Model):
     @property
     def children(self):
         return self.category_set.all().order_by('name')
+
+    def save(self, *args, **kwargs):
+        if not self.slug or self.slug == "":
+            self.slug = slugify(self.name)
+        super(Category, self).save(*args, **kwargs)
 
     def __str__(self):
         """
