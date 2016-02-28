@@ -1,6 +1,5 @@
 sudo: false
 language: python
-services: sqlite
 
 python:
   - "2.7"

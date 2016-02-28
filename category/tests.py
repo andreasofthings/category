@@ -55,4 +55,4 @@ class TagTest(TestCase):
 
     def test_new_tag(self):
         c = Tag.create(name="Test")
-        self.assertEqual(c.pk, 1)
+        self.assertEqual(c.pk, 3)

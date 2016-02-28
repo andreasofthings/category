@@ -13,11 +13,11 @@ class TagManager(models.Manager):
     Manager for `Tag` objects.
     """
 
-#    def get_by_natural_key(self, slug):
-#        """
-#        get Tag by natural key, to allow serialization by key rather than `id`
-#        """
-#        return self.get(slug=slug)
+    def get_by_natural_key(self, slug):
+        """
+        get Tag by natural key, to allow serialization by key rather than `pk`
+        """
+        return self.get(slug=slug)
 
 
 @python_2_unicode_compatible
@@ -85,17 +85,14 @@ class Tag(models.Model):
         verbose_name = _('tag')
         verbose_name_plural = _('tags')
 
-    def posts(self):
-        """
-        return all feeds in this category
-        """
-        return self.tag_posts.all()
-
     def __str__(self):
         """
         Human readable representation of the object.
         """
-        return u'%s' % (self.name)
+        return u''.join(self.name)
+
+    def natural_key(self):
+        return u''.join(self.slug)
 
     @models.permalink
     def get_absolute_url(self):
@@ -106,11 +103,11 @@ class CategoryManager(models.Manager):
     """
     Manager for Category
     """
-    # def get_by_natural_key(self, slug):
-    #    """
-    #    Get Category by natural kea to allow serialization
-    #    """
-    #    return self.get(slug=slug)
+    def get_by_natural_key(self, slug):
+        """
+        Get Category by natural kea to allow serialization
+        """
+        return self.get(slug=slug)
 
 
 @python_2_unicode_compatible
@@ -145,12 +142,6 @@ class Category(models.Model):
         print("Category name, slug: %s, %s" % (cat.name, cat.slug))
         return cat
 
-    def __str__(self):
-        return u'%s' % (self.name)
-
-    def natural_key(self):
-        return self.slug
-
     class Meta:
         """
         Django Meta.
@@ -162,6 +153,15 @@ class Category(models.Model):
     @property
     def children(self):
         return self.category_set.all().order_by('name')
+
+    def __str__(self):
+        """
+        Human readable representation of the object.
+        """
+        return u''.join(self.name)
+
+    def natural_key(self):
+        return u''.join(self.slug)
 
     @models.permalink
     def get_absolute_url(self):
