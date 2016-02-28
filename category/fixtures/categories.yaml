@@ -1,24 +1,32 @@
 - model: category.Category
+  pk: None
   fields:
     "name": "Business"
 - model: category.Category
+  pk: None
   fields:
     "name": "News"
 - model: category.Category
+  pk: None
   fields:
     "name": "Sports"
 - model: category.Category
+  pk: None
   fields:
     "name": "Culture"
 - model: category.Category
+  pk: None
   fields:
     "name": "Podcast"
 - model: category.Category
+  pk: None
   fields:
     "name": "High-Tech"
 - model: category.Tag
+  pk: None
   fields:
     "name": "Deutsch"
 - model: category.Tag
+  pk: None
   fields:
     "name": "English"
