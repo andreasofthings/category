@@ -1,4 +1,24 @@
 - model: category.Category
   fields:
-    "slug":
-      - '["business", ]'
+    "name": "Business"
+- model: category.Category
+  fields:
+    "name": "News"
+- model: category.Category
+  fields:
+    "name": "Sports"
+- model: category.Category
+  fields:
+    "name": "Culture"
+- model: category.Category
+  fields:
+    "name": "Podcast"
+- model: category.Category
+  fields:
+    "name": "High-Tech"
+- model: category.Tag
+  fields:
+    "name": "Deutsch"
+- model: category.Tag
+  fields:
+    "name": "English"
