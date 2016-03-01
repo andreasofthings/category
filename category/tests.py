@@ -10,8 +10,6 @@ from django.contrib.auth.models import AnonymousUser, User
 from django.core.urlresolvers import reverse
 
 from .models import Category
-from .views import CategoryListView
-from .views import CategoryDetailView
 
 from .models import Tag
 
@@ -33,14 +31,22 @@ class CategoryTest(TestCase):
         self.assertEqual(cat.pk, 7)
 
     def test_category_list_view(self):
-        request = self.factory.get('/category/')
-        response = CategoryListView.as_view()(request)
+        url = reverse('category:category-home')
+        response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
     def test_category_detail_view(self):
         url = reverse('category:category-view', kwargs={'pk': 1, })
-        request = self.factory.get(url)
-        response = CategoryDetailView.as_view()(request)
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 302)
+
+    def test_category_add_view(self):
+        url = reverse('category:category-add', kwargs={'pk': 1, })
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 302)
+
+    def test_category_update_view(self):
+        url = reverse('category:category-update', kwargs={'pk': 1, })
         response = self.client.get(url)
         self.assertEqual(response.status_code, 302)
 
