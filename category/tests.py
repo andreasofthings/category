@@ -40,7 +40,7 @@ class CategoryTest(TestCase):
     def test_category_detail_view(self):
         url = reverse('category:category-view', kwargs={'pk': 1, })
         request = self.factory.get(url)
-
+        response = CategoryDetailView.as_view()(request)
         response = self.client.get(url)
         self.assertEqual(response.status_code, 302)
 
