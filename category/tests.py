@@ -41,12 +41,15 @@ class CategoryTest(TestCase):
         self.assertEqual(response.status_code, 302)
 
     def test_category_add_view(self):
-        url = reverse('category:category-add', kwargs={'pk': 1, })
+        url = reverse('category:category-add')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 302)
 
     def test_category_update_view(self):
         url = reverse('category:category-update', kwargs={'pk': 1, })
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 302)
+        url = reverse('category:category-update', kwargs={'slug': 'business'})
         response = self.client.get(url)
         self.assertEqual(response.status_code, 302)
 
