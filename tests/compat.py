@@ -8,7 +8,4 @@ try:
 except ImportError:
     from django.utils import simplejson as json
 
-try:
-    from django.conf.urls import patterns, url, include
-except ImportError:
-    from django.conf.urls.defaults import patterns, url, include
+from django.conf.urls import patterns, url, include
