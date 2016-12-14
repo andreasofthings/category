@@ -7,6 +7,10 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 class TagManager(models.Manager):
     """
@@ -74,7 +78,7 @@ class Tag(models.Model):
         if not slug:
             tag.slug = slugify(tag.name)
         tag.save()
-        print("Tag name, slug: %s, %s" % (tag.name, tag.slug))
+        logger.debug("Tag name, slug: %s, %s" % (tag.name, tag.slug))
         return tag
 
     class Meta:
@@ -138,15 +142,6 @@ class Category(models.Model):
 
     parent = models.ForeignKey('self', null=True, blank=True)
 
-    @classmethod
-    def create(cls, name, slug=None):
-        cat = cls(name=name)
-        if not slug:
-            cat.slug = slugify(cat.name)
-        cat.save()
-        print("Category name, slug: %s, %s" % (cat.name, cat.slug))
-        return cat
-
     class Meta:
         """
         Django Meta.
@@ -158,6 +153,15 @@ class Category(models.Model):
     @property
     def children(self):
         return self.category_set.all().order_by('name')
+
+    @classmethod
+    def create(cls, name, slug=None):
+        cat = cls(name=name)
+        if not slug:
+            cat.slug = slugify(cat.name)
+        cat.save()
+        logger.debug("Category name, slug: %s, %s" % (cat.name, cat.slug))
+        return cat
 
     def save(self, *args, **kwargs):
         if not self.slug or self.slug == "":

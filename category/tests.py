@@ -10,7 +10,6 @@ from django.contrib.auth.models import AnonymousUser, User
 from django.core.urlresolvers import reverse
 
 from .models import Category
-
 from .models import Tag
 
 
@@ -27,8 +26,20 @@ class CategoryTest(TestCase):
         self.anonymous = AnonymousUser()
 
     def test_new_category(self):
-        cat = Category.create(name="Test")
+        cat = Category(name="Test")
+        cat.save()
         self.assertEqual(cat.pk, 7)
+
+    def test_existing_category(self):
+        cat = Category(name="Test")
+        cat.save()
+        self.assertEqual(cat.pk, 7)
+
+    def test_delete_category(self):
+        cat = Category.objects.get(pk=1)
+        self.assertEqual(cat.pk, 1)
+        cat.delete()
+        self.assertEqual(cat.pk, None)
 
     def test_category_list_view(self):
         url = reverse('category:category-home')
