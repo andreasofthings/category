@@ -126,6 +126,7 @@ class Category(models.Model):
 
     name = models.CharField(
         max_length=200,
+        unique=True,
         help_text='Short descriptive name for this category.',
     )
 
