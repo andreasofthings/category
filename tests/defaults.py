@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.sitemaps',
     'tests',
+    'crispy_forms',
     'category'
 )
 

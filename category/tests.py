@@ -45,6 +45,13 @@ class CategoryTest(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 302)
 
+    def test_category_add_view_authenticated(self):
+        url = reverse('category:category-add')
+        self.client.login(username="jacob", password="top_secret")
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.client.logout()
+
     def test_category_update_view(self):
         url = reverse('category:category-update', kwargs={'pk': 1, })
         response = self.client.get(url)
@@ -52,6 +59,16 @@ class CategoryTest(TestCase):
         url = reverse('category:category-update', kwargs={'slug': 'business'})
         response = self.client.get(url)
         self.assertEqual(response.status_code, 302)
+
+    def test_category_update_view_authenticated(self):
+        self.client.login(username="jacob", password="top_secret")
+        url = reverse('category:category-update', kwargs={'pk': 1, })
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        url = reverse('category:category-update', kwargs={'slug': 'business'})
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.client.logout()
 
 
 class TagTest(TestCase):
