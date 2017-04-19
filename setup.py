@@ -33,6 +33,5 @@ setup(
     install_requires=[
         'django>=1.9.0',
         'django-crispy-forms>=1.6.0',
-        'pyaml',
     ],
 )

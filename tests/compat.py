@@ -7,5 +7,3 @@ try:
     import json
 except ImportError:
     from django.utils import simplejson as json
-
-from django.conf.urls import patterns, url, include

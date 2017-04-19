@@ -36,7 +36,7 @@ class CategoryTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_category_detail_view(self):
-        url = reverse('category:category-view', kwargs={'pk': 1, })
+        url = reverse('category:category-detail', kwargs={'pk': 1, })
         response = self.client.get(url)
         self.assertEqual(response.status_code, 302)
 
