@@ -32,9 +32,10 @@ setup(
     ],
     install_requires=[
         'django>=1.9.0',
+        'django-crispy-forms>=1.6.0',
         'djangorestframework>=3.6.0',
         'coreapi==2.1.1',
         'coreschema==0.0.4',
-        'django-crispy-forms>=1.6.0',
+        'pyaml==16.12.2',
     ],
 )
