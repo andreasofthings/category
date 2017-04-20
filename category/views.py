@@ -34,10 +34,7 @@ class CategoryDetailView(LoginRequiredMixin, DetailView):
     model = Category
 
 
-class CategoryUpdateView(
-        LoginRequiredMixin,
-        PermissionRequiredMixin,
-        UpdateView):
+class CategoryUpdateView(LoginRequiredMixin, UpdateView):
     """
     Update a particular Category
     """
@@ -82,9 +79,6 @@ class TagDetailView(DetailView):
     """
     model = Tag
     paginate_by = 10
-
-    def dispatch(self, *args, **kwargs):
-        return super(TagDetailView, self).dispatch(*args, **kwargs)
 
 
 class TagCreateView(LoginRequiredMixin, CreateView):

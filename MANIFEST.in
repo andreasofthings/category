@@ -1,8 +1,9 @@
 include LICENSE
+include README.rst
 recursive-include category/templates/category *
-recursive-include category/templates *
 recursive-include category/templatetags *
-recursive-include quesions/migrations *
+recursive-include category/migrations *
+recursive-include category/templates *
 recursive-include category/static *
 recursive-include category *
 recursive-include docs/source *
