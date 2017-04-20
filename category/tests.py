@@ -9,6 +9,8 @@ from django.test import TestCase, Client, RequestFactory
 from django.contrib.auth.models import AnonymousUser, User
 from django.core.urlresolvers import reverse
 
+from rest_framework.test import APITestCase
+
 from .models import Category
 from .models import Tag
 
@@ -47,6 +49,7 @@ class CategoryTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_category_detail_view(self):
+        self.client.logout()
         url = reverse('category:category-detail', kwargs={'pk': 1, })
         response = self.client.get(url)
         self.assertEqual(response.status_code, 302)
@@ -93,3 +96,30 @@ class TagTest(TestCase):
     def test_new_tag(self):
         c = Tag.create(name="Test")
         self.assertEqual(c.pk, 3)
+
+
+class APITest(APITestCase):
+    fixtures = [
+        'categories.yaml',
+    ]
+
+    def test_category_list(self):
+        url = reverse('category:api_category-list')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+    def test_category_detail(self):
+        url = reverse('category:api_category-detail', kwargs={'pk': '1'})
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+    def test_category_create(self):
+        url = reverse('category:api_category-list')
+        response = self.client.post(
+            url,
+            {
+                'name': 'test',
+                'slug': 'test'
+            }, format='json')
+        print(response.content)
+        self.assertEqual(response.status_code, 201)

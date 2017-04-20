@@ -1,13 +1,17 @@
 #! /usr/bin/env python2.7
 # -*- coding: utf-8 -*-
 
-from django.conf.urls import url
+from django.conf.urls import url, include
 
 from category.views import CategoryListView, CategoryCreateView
 from category.views import CategoryDetailView, CategoryUpdateView
 from category.views import TagListView, TagDetailView
 from category.views import TagCreateView, TagUpdateView
 
+from category.api import CategoryViewSet, TagViewSet
+
+from rest_framework import routers
+from rest_framework.documentation import include_docs_urls
 
 urlpatterns = [
     url(
@@ -67,4 +71,15 @@ urlpatterns += [
         TagUpdateView.as_view(),
         name="tag-update"
     ),
+]
+
+
+# Routers provide an easy way of automatically determining the URL conf.
+router = routers.DefaultRouter(trailing_slash=False)
+router.register(r'category', CategoryViewSet, base_name="api_category")
+router.register(r'tag', TagViewSet, base_name="api_tag")
+
+urlpatterns += [
+    url(r'^api/', include(router.urls)),
+    url(r'^docs/', include_docs_urls(title='Category API'))
 ]

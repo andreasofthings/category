@@ -34,9 +34,7 @@ class CategoryDetailView(LoginRequiredMixin, DetailView):
     model = Category
 
 
-class CategoryUpdateView(
-        LoginRequiredMixin,
-        UpdateView):
+class CategoryUpdateView(LoginRequiredMixin, UpdateView):
     """
     Update a particular Category
     """
