@@ -72,15 +72,6 @@ class Tag(models.Model):
     object_id = models.PositiveIntegerField(null=True)
     content_object = GenericForeignKey('content_type', 'object_id')
 
-    @classmethod
-    def create(cls, name, slug=None):
-        tag = cls(name=name)
-        if not slug:
-            tag.slug = slugify(tag.name)
-        tag.save()
-        logger.debug("Tag name, slug: %s, %s" % (tag.name, tag.slug))
-        return tag
-
     class Meta:
         """
         Django Meta.
@@ -88,6 +79,15 @@ class Tag(models.Model):
         ordering = ('name',)
         verbose_name = _('tag')
         verbose_name_plural = _('tags')
+
+    @classmethod
+    def create(cls, name, slug=None):
+        tag = cls(name=name)
+        if not slug or slug == "":
+            tag.slug = slugify(tag.name)
+        tag.save()
+        logger.debug("Tag name, slug: %s, %s" % (tag.name, tag.slug))
+        return tag
 
     def save(self, *args, **kwargs):
         if not self.slug or self.slug == "":
@@ -158,7 +158,7 @@ class Category(models.Model):
     @classmethod
     def create(cls, name, slug=None):
         cat = cls(name=name)
-        if not slug:
+        if not slug or slug == "":
             cat.slug = slugify(cat.name)
         cat.save()
         logger.debug("Category name, slug: %s, %s" % (cat.name, cat.slug))

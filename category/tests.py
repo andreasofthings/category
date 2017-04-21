@@ -31,6 +31,9 @@ class CategoryTest(TestCase):
         cat = Category(name="Test")
         cat.save()
         self.assertEqual(cat.pk, 7)
+        cat = Category.objects.get_or_create(name="Test")[0]
+        cat.save()
+        self.assertEqual(cat.pk, 7)
 
     def test_existing_category(self):
         cat = Category(name="Test")
@@ -121,5 +124,4 @@ class APITest(APITestCase):
                 'name': 'test',
                 'slug': 'test'
             }, format='json')
-        print(response.content)
         self.assertEqual(response.status_code, 201)
