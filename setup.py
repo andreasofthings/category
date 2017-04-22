@@ -36,6 +36,6 @@ setup(
         'djangorestframework>=3.6.0',
         'coreapi==2.1.1',
         'coreschema==0.0.4',
-        'pyaml==16.12.2',
+        'pyaml==16.12.2'
     ],
 )

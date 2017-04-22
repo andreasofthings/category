@@ -19,8 +19,8 @@ class Migration(migrations.Migration):
             name='Category',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(help_text=b'Short descriptive name for this category.', max_length=200)),
-                ('slug', models.SlugField(help_text=b'Short descriptive unique name for use in urls.', max_length=255, unique=True)),
+                ('name', models.CharField(help_text='Short descriptive name for this category.', max_length=200, unique=True)),
+                ('slug', models.SlugField(help_text='Short descriptive unique name for use in urls.', max_length=255, unique=True)),
                 ('parent', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='category.Category')),
             ],
             options={
@@ -34,7 +34,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(db_index=True, max_length=50, unique=True, verbose_name='name')),
-                ('slug', models.SlugField(help_text=b'Short descriptive unique name for use in urls.', max_length=255, unique=True)),
+                ('slug', models.SlugField(help_text='Short descriptive unique name for use in urls.', max_length=255, unique=True)),
                 ('relevant', models.BooleanField(default=False)),
                 ('touched', models.DateTimeField(auto_now=True)),
                 ('object_id', models.PositiveIntegerField(null=True)),

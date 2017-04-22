@@ -6,5 +6,6 @@ recursive-include category/migrations *
 recursive-include category/templates *
 recursive-include category/static *
 recursive-include category *
+recursive-include docs/ *
 recursive-include docs/source *
 include docs/Makefile
