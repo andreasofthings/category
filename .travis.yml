@@ -4,6 +4,7 @@ language: python
 python:
   - "2.7"
   - "3.5"
+  - "3.6"
 
 cache:
   directories:
@@ -13,7 +14,7 @@ env:
   - TRAVIS="True"
 
 install:
-  - pip install git+https://github.com/aneumeier/category#master
+  - python setup.py install
   - pip install coveralls
 script:
   - coverage run --source=category categorytest.py -m py.test
